@@ -3,6 +3,8 @@
 
 
 using IdentityServer4.Models;
+using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 
 namespace CasaDoCodigo.Identity
@@ -26,8 +28,10 @@ namespace CasaDoCodigo.Identity
             };
         }
 
-        public static IEnumerable<Client> GetClients()
+        public static IEnumerable<Client> GetClients(IConfiguration configuration)
         {
+            string callBackUri = configuration["CallbackUrl"];
+
             return new[]
             {
                 // client credentials flow client
@@ -41,7 +45,7 @@ namespace CasaDoCodigo.Identity
 
                     AllowedScopes = { "api1" }
                 },
-
+                               
                 // MVC client using hybrid flow
                 new Client
                 {
@@ -51,12 +55,12 @@ namespace CasaDoCodigo.Identity
                     AllowedGrantTypes = GrantTypes.HybridAndClientCredentials,
                     ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
 
-                    RedirectUris = { "http://localhost:5001/signin-oidc" },
-                    FrontChannelLogoutUri = "http://localhost:5001/signout-oidc",
-                    PostLogoutRedirectUris = { "http://localhost:5001/signout-callback-oidc" },
+                    RedirectUris = { callBackUri + "/signin-oidc" },
+                    FrontChannelLogoutUri = callBackUri + "/signout-oidc",
+                    PostLogoutRedirectUris = { callBackUri + "/signout-callback-oidc" },
 
                     AllowOfflineAccess = true,
-                    AllowedScopes = { "openid", "profile", "api1" }
+                    AllowedScopes = { "openid", "profile", "email", "api1" }
                 },
 
                 // SPA client using implicit flow

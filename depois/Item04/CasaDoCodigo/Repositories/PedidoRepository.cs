@@ -94,7 +94,7 @@ namespace CasaDoCodigo.Repositories
             if (pedido == null)
             {
                 var claimsPrincipal = contextAccessor.HttpContext.User;
-                var clienteId = userManager.GetUserId(claimsPrincipal);
+                var clienteId = claimsPrincipal.FindFirst("sub")?.Value;
                 pedido = new Pedido(clienteId);
                 await dbSet.AddAsync(pedido);
                 await contexto.SaveChangesAsync();
