@@ -21,3 +21,20 @@ Itens:
     Subtotal: R$99,80
 =============================================
 
+=============================================
+No. Pedido: 02002
+Cliente: 
+    Nome: Alice Smith
+    Endereco: rua vergueiro, 1234567 fundos vila mariana são paulo SP
+    Fone: 1234-5678
+    Email: alice@smith.com
+    Total: R$99,80
+Itens:
+
+    Código: 183
+    Preco Unitário: 00050
+    Descrição: eXtreme Programming: Práticas para o dia a dia no desenvolvimento ágil de software
+    Quantidade: 002
+    Subtotal: R$99,80
+=============================================
+

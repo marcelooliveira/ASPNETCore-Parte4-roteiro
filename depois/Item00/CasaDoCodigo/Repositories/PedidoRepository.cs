@@ -9,7 +9,6 @@ using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CasaDoCodigo.Repositories
@@ -31,18 +30,21 @@ namespace CasaDoCodigo.Repositories
         private readonly IHttpHelper httpHelper;
         private readonly ICadastroRepository cadastroRepository;
         private readonly UserManager<AppIdentityUser> userManager;
+        private readonly IRelatorioHelper relatorioHelper;
 
         public PedidoRepository(IConfiguration configuration,
             ApplicationContext contexto,
             IHttpContextAccessor contextAccessor,
             IHttpHelper sessionHelper,
             ICadastroRepository cadastroRepository,
-            UserManager<AppIdentityUser> userManager) : base(configuration, contexto)
+            UserManager<AppIdentityUser> userManager,
+            IRelatorioHelper relatorioHelper) : base(configuration, contexto)
         {
             this.contextAccessor = contextAccessor;
             this.httpHelper = sessionHelper;
             this.cadastroRepository = cadastroRepository;
             this.userManager = userManager;
+            this.relatorioHelper = relatorioHelper;
         }
 
         public async Task AddItemAsync(string codigo)
@@ -130,7 +132,7 @@ namespace CasaDoCodigo.Repositories
             var pedido = await GetPedidoAsync();
             await cadastroRepository.UpdateAsync(pedido.Cadastro.Id, cadastro);
             httpHelper.ResetPedidoId();
-            await GerarRelatorio(pedido);
+            await relatorioHelper.GerarRelatorio(pedido);
             return pedido;
         }
 
@@ -146,54 +148,6 @@ namespace CasaDoCodigo.Repositories
         {
             contexto.Set<ItemPedido>()
                 .Remove(await GetItemPedidoAsync(itemPedidoId));
-        }
-
-        private async Task GerarRelatorio(Pedido pedido)
-        {
-            string linhaRelatorio = await GetLinhaRelatorio(pedido);
-            await System.IO.File.AppendAllLinesAsync("Relatorio.txt", new string[] { linhaRelatorio });
-        }
-
-        private static async Task<string> GetLinhaRelatorio(Pedido pedido)
-        {
-            StringBuilder sb = new StringBuilder();
-            string templatePedido =
-                    await System.IO.File.ReadAllTextAsync("TemplatePedido.txt");
-
-            string templateItemPedido =
-                await System.IO.File.ReadAllTextAsync("TemplateItemPedido.txt");
-
-            string linhaPedido =
-                string.Format(templatePedido,
-                    pedido.Id,
-                    pedido.Cadastro.Nome,
-                    pedido.Cadastro.Endereco,
-                    pedido.Cadastro.Complemento,
-                    pedido.Cadastro.Bairro,
-                    pedido.Cadastro.Municipio,
-                    pedido.Cadastro.UF,
-                    pedido.Cadastro.Telefone,
-                    pedido.Cadastro.Email,
-                    pedido.Itens.Sum(i => i.Subtotal));
-
-            sb.AppendLine(linhaPedido);
-
-            foreach (var i in pedido.Itens)
-            {
-                string linhaItemPedido =
-                    string.Format(
-                        templateItemPedido,
-                        i.Produto.Codigo,
-                        i.PrecoUnitario,
-                        i.Produto.Nome,
-                        i.Quantidade,
-                        i.Subtotal);
-
-                sb.AppendLine(linhaItemPedido);
-            }
-            sb.AppendLine($@"=============================================");
-
-            return sb.ToString();
         }
     }
 }

@@ -77,7 +77,8 @@ namespace CasaDoCodigo
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddTransient<ICadastroRepository, CadastroRepository>();
-
+            services.AddTransient<IRelatorioHelper, RelatorioHelper>();
+            
             //TAREFA: Permitir login externo 
             //com a conta da Microsoft
             //https://apps.dev.microsoft.com/
@@ -89,7 +90,7 @@ namespace CasaDoCodigo
 
             //HABILITE ESTAS LINHAS ABAIXO APENAS
             //APÓS CONFIGURAR SUA APLICAÇÃO NA MICROSOFT E NO GOOGLE.
-            
+
             //services.AddAuthentication()
             //    .AddMicrosoftAccount(options =>
             //    {
