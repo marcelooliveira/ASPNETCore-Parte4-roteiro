@@ -1,0 +1,17 @@
+=============================================
+No. Pedido: 00001
+Cliente: 
+    Nome: Alice Smith
+    Endereco: rua vergueiro, 1234567 fundos vila mariana são paulo SP
+    Fone: 1234-5678
+    Email: alice@smith.com
+    Total: R$349,30
+Itens:
+
+    Código: 180
+    Preco Unitário: 00050
+    Descrição: Scrum: Gestão ágil para projetos de sucesso
+    Quantidade: 007
+    Subtotal: R$349,30
+=============================================
+
