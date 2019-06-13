@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CasaDoCodigo.Relatorio.Controllers
+namespace CasaDoCodigo.RelatorioWebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

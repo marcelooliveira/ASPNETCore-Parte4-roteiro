@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item01", "Item01", "{72B759
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.MVC", "depois\Item01\CasaDoCodigo\CasaDoCodigo.MVC.csproj", "{7DFA14E1-4CF5-4017-AED5-4A1A5776DE90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasaDoCodigo.Relatorio", "depois\Item01\CasaDoCodigo.Relatorio\CasaDoCodigo.Relatorio.csproj", "{04CCA19E-4678-4455-A18F-B3CDD6128A2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasaDoCodigo.RelatorioWebAPI", "depois\Item01\CasaDoCodigo.Relatorio\CasaDoCodigo.RelatorioWebAPI.csproj", "{04CCA19E-4678-4455-A18F-B3CDD6128A2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
