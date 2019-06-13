@@ -71,6 +71,7 @@ namespace CasaDoCodigo
             //https://docs.microsoft.com/pt-br/ef/core/providers/index
             #endregion
 
+            services.AddHttpClient();
             services.AddTransient<IDataService, DataService>();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IHttpHelper, HttpHelper>();
