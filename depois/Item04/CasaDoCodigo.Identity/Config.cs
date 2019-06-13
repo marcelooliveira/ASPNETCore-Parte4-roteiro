@@ -45,8 +45,8 @@ namespace CasaDoCodigo.Identity
                 // MVC client using hybrid flow
                 new Client
                 {
-                    ClientId = "mvc",
-                    ClientName = "MVC Client",
+                    ClientId = "CasaDoCodigo.MVC",
+                    ClientName = "Casa do Código MVC",
 
                     AllowedGrantTypes = GrantTypes.HybridAndClientCredentials,
                     ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },

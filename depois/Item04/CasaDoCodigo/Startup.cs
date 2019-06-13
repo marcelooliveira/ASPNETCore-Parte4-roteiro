@@ -1,4 +1,6 @@
 ﻿using CasaDoCodigo.Repositories;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -91,18 +93,35 @@ namespace CasaDoCodigo
 
             //HABILITE ESTAS LINHAS ABAIXO APENAS
             //APÓS CONFIGURAR SUA APLICAÇÃO NA MICROSOFT E NO GOOGLE.
-            
-            //services.AddAuthentication()
-            //    .AddMicrosoftAccount(options =>
-            //    {
-            //        options.ClientId = Configuration["ExternalLogin:Microsoft:ClientId"];
-            //        options.ClientSecret = Configuration["ExternalLogin:Microsoft:ClientSecret"];
-            //    })
-            //    .AddGoogle(options =>
-            //    {
-            //        options.ClientId = Configuration["ExternalLogin:Google:ClientId"];
-            //        options.ClientSecret = Configuration["ExternalLogin:Google:ClientSecret"];
-            //    });
+
+            services.AddAuthentication(options =>
+                {
+                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+                }
+            )
+            .AddCookie()
+            .AddOpenIdConnect(options =>
+            {
+                options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.Authority = "http://localhost:5000";
+                options.ClientId = "CasaDoCodigo.MVC";
+                options.ClientSecret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0";
+                options.ResponseType = "code id_token";
+                options.RequireHttpsMetadata = false;
+            });
+            //.AddMicrosoftAccount(options =>
+            //{
+            //    options.ClientId = Configuration["ExternalLogin:Microsoft:ClientId"];
+            //    options.ClientSecret = Configuration["ExternalLogin:Microsoft:ClientSecret"];
+            //})
+            //.AddGoogle(options =>
+            //{
+            //    options.ClientId = Configuration["ExternalLogin:Google:ClientId"];
+            //    options.ClientSecret = Configuration["ExternalLogin:Google:ClientSecret"];
+            //});
+
+            services.AddAuthorization();
         }
 
 
