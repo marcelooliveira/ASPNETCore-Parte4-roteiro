@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CasaDoCodigo.RelatorioWebAPI.Controllers
@@ -28,9 +29,13 @@ namespace CasaDoCodigo.RelatorioWebAPI.Controllers
             return sb.ToString();
         }
 
+        [Authorize]
         [HttpPost]
         public void PostAsync([FromBody] string value)
         {
+            Relatorio.Add(new string('=', 100));
+            Relatorio.Add("Criado por: " + User.FindFirst("name")?.Value);
+            Relatorio.Add(new string('=', 100));
             Relatorio.Add(value);
         }
     }
