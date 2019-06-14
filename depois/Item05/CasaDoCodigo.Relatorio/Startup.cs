@@ -25,6 +25,16 @@ namespace CasaDoCodigo.RelatorioWebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services
+            .AddAuthentication("Bearer")
+            .AddIdentityServerAuthentication(options =>
+            {
+                options.ApiName = "CasaDoCodigo.Relatorio";
+                options.ApiSecret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0";
+                options.Authority = Configuration["CasaDoCodigo.Identity"];
+                options.RequireHttpsMetadata = false;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +45,7 @@ namespace CasaDoCodigo.RelatorioWebAPI
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseAuthentication(); //ANTES DE UseMVC() !!!
             app.UseMvc();
         }
     }

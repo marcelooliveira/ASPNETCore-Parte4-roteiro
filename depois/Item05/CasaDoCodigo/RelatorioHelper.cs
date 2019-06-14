@@ -20,26 +20,34 @@ namespace CasaDoCodigo
         private const string RelatorioUri = "/api/values";
         private readonly IHttpClientFactory httpClientFactory;
         private readonly IConfiguration configuration;
+        private readonly IHttpHelper httpHelper;
 
         public RelatorioHelper(IHttpClientFactory httpClientFactory,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IHttpHelper httpHelper)
         {
             this.httpClientFactory = httpClientFactory;
             this.configuration = configuration;
+            this.httpHelper = httpHelper;
         }
 
         public async Task GerarRelatorio(Pedido pedido)
         {
-            HttpClient httpClient = httpClientFactory.CreateClient();
-            string linhaRelatorio = await GetLinhaRelatorio(pedido);
-            var json = JsonConvert.SerializeObject(linhaRelatorio);
-            HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
-            Uri baseUri = new Uri(configuration["CasaDoCodigo.RelatorioWebAPI"]);
-            Uri uri = new Uri(baseUri, RelatorioUri);
-            HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(uri, httpContent);
-            if (!httpResponseMessage.IsSuccessStatusCode)
+            using (HttpClient httpClient = httpClientFactory.CreateClient())
             {
-                throw new ApplicationException(httpResponseMessage.ReasonPhrase);
+                var accessToken = await httpHelper.GetAccessToken(httpClient, "CasaDoCodigo.Relatorio");
+                httpClient.SetBearerToken(accessToken);
+
+                string linhaRelatorio = await GetLinhaRelatorio(pedido);
+                var json = JsonConvert.SerializeObject(linhaRelatorio);
+                HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
+                Uri baseUri = new Uri(configuration["CasaDoCodigo.RelatorioWebAPI"]);
+                Uri uri = new Uri(baseUri, RelatorioUri);
+                HttpResponseMessage httpResponseMessage = await httpClient.PostAsync(uri, httpContent);
+                if (!httpResponseMessage.IsSuccessStatusCode)
+                {
+                    throw new ApplicationException(httpResponseMessage.ReasonPhrase);
+                }
             }
         }
 

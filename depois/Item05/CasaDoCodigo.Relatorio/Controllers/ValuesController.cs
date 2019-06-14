@@ -33,9 +33,6 @@ namespace CasaDoCodigo.RelatorioWebAPI.Controllers
         [HttpPost]
         public void PostAsync([FromBody] string value)
         {
-            Relatorio.Add(new string('=', 100));
-            Relatorio.Add("Criado por: " + User.FindFirst("name")?.Value);
-            Relatorio.Add(new string('=', 100));
             Relatorio.Add(value);
         }
     }

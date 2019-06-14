@@ -1,9 +1,12 @@
 ﻿using CasaDoCodigo.Areas.Identity.Data;
 using CasaDoCodigo.Models;
+using IdentityModel.Client;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace CasaDoCodigo
 {
@@ -43,6 +46,20 @@ namespace CasaDoCodigo
         {
             var claimsPrincipal = contextAccessor.HttpContext.User;
             return userManager.GetUserId(claimsPrincipal);
+        }
+
+        public async Task<string> GetAccessToken(HttpClient client, string scope)
+        {
+            var response = await client.RequestClientCredentialsTokenAsync(
+                new ClientCredentialsTokenRequest
+                {
+                    Address = Configuration["CasaDoCodigo.Identity"] + "/connect/token",
+                    ClientId = "CasaDoCodigo.MVC",
+                    ClientSecret = "49C1A7E1-0C79-4A89-A3D6-A37998FB86B0",
+                    Scope = scope
+                });
+
+            return response.AccessToken ?? response.Error;
         }
     }
 }
