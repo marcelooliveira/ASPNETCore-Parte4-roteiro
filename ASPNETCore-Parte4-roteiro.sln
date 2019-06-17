@@ -9,21 +9,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "antes", "antes", "{C89FD6DA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "depois", "depois", "{43B5A8C4-6DF1-4822-A762-8F6E81D7A50D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item00", "Item00", "{F27E3D4C-1B88-402F-AAE3-BF748893E5C2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item00 - O Projeto Inicial", "Item00 - O Projeto Inicial", "{F27E3D4C-1B88-402F-AAE3-BF748893E5C2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item01", "Item01", "{72B759CE-806F-4BBF-A261-174C1AD83041}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item01 - Criando Web API de Relatório", "Item01 - Criando Web API de Relatório", "{72B759CE-806F-4BBF-A261-174C1AD83041}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.MVC", "depois\Item01\CasaDoCodigo\CasaDoCodigo.MVC.csproj", "{7DFA14E1-4CF5-4017-AED5-4A1A5776DE90}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.RelatorioWebAPI", "depois\Item01\CasaDoCodigo.Relatorio\CasaDoCodigo.RelatorioWebAPI.csproj", "{04CCA19E-4678-4455-A18F-B3CDD6128A2C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item02", "Item02", "{A0889814-0B50-47B8-BD35-AEB581078BF6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item02 - Consumindo Web API de Relatório", "Item02 - Consumindo Web API de Relatório", "{A0889814-0B50-47B8-BD35-AEB581078BF6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.MVC", "depois\Item02\CasaDoCodigo\CasaDoCodigo.MVC.csproj", "{EC2737E4-5AC9-4087-ACB4-EB43366D7EB8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.RelatorioWebAPI", "depois\Item02\CasaDoCodigo.Relatorio\CasaDoCodigo.RelatorioWebAPI.csproj", "{13903AFC-69FA-4951-B586-86E7C330AB81}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item03", "Item03", "{E3331084-A0AE-4D4D-9AB3-792D214B8975}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item03 - Criando Projeto IdentityServer4", "Item03 - Criando Projeto IdentityServer4", "{E3331084-A0AE-4D4D-9AB3-792D214B8975}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.MVC", "depois\Item03\CasaDoCodigo\CasaDoCodigo.MVC.csproj", "{305A0E0C-35FD-4733-8FE9-6AACB6B12EB4}"
 EndProject
@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.RelatorioWebAP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.Identity", "depois\Item03\CasaDoCodigo.Identity\CasaDoCodigo.Identity.csproj", "{A31D760D-D072-4B25-9CB4-086A1BD0318E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item04", "Item04", "{41C7AAA6-C378-4BB4-97D9-0CDADBC90624}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item04 - Configurando Identity + Cliente MVC", "Item04 - Configurando Identity + Cliente MVC", "{41C7AAA6-C378-4BB4-97D9-0CDADBC90624}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.MVC", "depois\Item04\CasaDoCodigo\CasaDoCodigo.MVC.csproj", "{F0DDB902-29D6-44C3-8E87-CBF43B96BD12}"
 EndProject
@@ -39,7 +39,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.Identity", "de
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.RelatorioWebAPI", "depois\Item04\CasaDoCodigo.Relatorio\CasaDoCodigo.RelatorioWebAPI.csproj", "{D41DDDCF-940D-42C9-B225-9B0B52261481}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item05", "Item05", "{D6D47E9F-865E-4FDE-94D5-1B19DE295054}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Item05 - Usando Token de Acesso", "Item05 - Usando Token de Acesso", "{D6D47E9F-865E-4FDE-94D5-1B19DE295054}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CasaDoCodigo.MVC", "depois\Item05\CasaDoCodigo\CasaDoCodigo.MVC.csproj", "{4012619A-B30F-4BDC-8285-F62E692FC9F2}"
 EndProject
