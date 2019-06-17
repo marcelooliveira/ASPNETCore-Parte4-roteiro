@@ -1,40 +1,29 @@
 =============================================
-No. Pedido: 01002
+No. Pedido: 19008
 Cliente: 
     Nome: Alice Smith
     Endereco: rua vergueiro, 1234567 fundos vila mariana são paulo SP
     Fone: 1234-5678
     Email: alice@smith.com
-    Total: R$249,50
+    Total: R$299,40
 Itens:
 
     Código: 183
     Preco Unitário: 00050
     Descrição: eXtreme Programming: Práticas para o dia a dia no desenvolvimento ágil de software
+    Quantidade: 001
+    Subtotal: R$49,90
+
+    Código: 002
+    Preco Unitário: 00050
+    Descrição: Introdução à Computação: Da Lógica aos jogos com Ruby
+    Quantidade: 002
+    Subtotal: R$99,80
+
+    Código: 009
+    Preco Unitário: 00050
+    Descrição: SOA aplicado: Integrando com web services e além
     Quantidade: 003
     Subtotal: R$149,70
-
-    Código: 184
-    Preco Unitário: 00050
-    Descrição: Scrum 360: Um guia completo e prático de agilidade
-    Quantidade: 002
-    Subtotal: R$99,80
-=============================================
-
-=============================================
-No. Pedido: 02002
-Cliente: 
-    Nome: Alice Smith
-    Endereco: rua vergueiro, 1234567 fundos vila mariana são paulo SP
-    Fone: 1234-5678
-    Email: alice@smith.com
-    Total: R$99,80
-Itens:
-
-    Código: 183
-    Preco Unitário: 00050
-    Descrição: eXtreme Programming: Práticas para o dia a dia no desenvolvimento ágil de software
-    Quantidade: 002
-    Subtotal: R$99,80
 =============================================
 
