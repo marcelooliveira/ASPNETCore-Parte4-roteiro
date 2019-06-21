@@ -71,7 +71,6 @@ namespace CasaDoCodigo
             //https://docs.microsoft.com/pt-br/ef/core/providers/index
             #endregion
 
-            services.AddHttpClient();
             services.AddTransient<IDataService, DataService>();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IHttpHelper, HttpHelper>();
@@ -79,6 +78,7 @@ namespace CasaDoCodigo
             services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddTransient<ICadastroRepository, CadastroRepository>();
             services.AddTransient<IRelatorioHelper, RelatorioHelper>();
+            services.AddHttpClient<IRelatorioHelper, RelatorioHelper>();
 
             //TAREFA: Permitir login externo 
             //com a conta da Microsoft
@@ -91,7 +91,7 @@ namespace CasaDoCodigo
 
             //HABILITE ESTAS LINHAS ABAIXO APENAS
             //APÓS CONFIGURAR SUA APLICAÇÃO NA MICROSOFT E NO GOOGLE.
-            
+
             //services.AddAuthentication()
             //    .AddMicrosoftAccount(options =>
             //    {

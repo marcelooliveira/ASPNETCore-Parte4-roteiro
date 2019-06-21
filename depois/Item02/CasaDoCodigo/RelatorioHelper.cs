@@ -1,5 +1,4 @@
 ﻿using CasaDoCodigo.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -18,19 +17,19 @@ namespace CasaDoCodigo
     public class RelatorioHelper : IRelatorioHelper
     {
         private const string RelatorioUri = "/api/values";
-        private readonly IHttpClientFactory httpClientFactory;
+        private readonly HttpClient httpClient;
         private readonly IConfiguration configuration;
 
-        public RelatorioHelper(IHttpClientFactory httpClientFactory,
+        public RelatorioHelper(HttpClient httpClient,
             IConfiguration configuration)
         {
-            this.httpClientFactory = httpClientFactory;
+            this.httpClient = httpClient;
             this.configuration = configuration;
         }
 
         public async Task GerarRelatorio(Pedido pedido)
         {
-            HttpClient httpClient = httpClientFactory.CreateClient();
+            //HttpClient httpClient = httpClient.CreateClient();
             string linhaRelatorio = await GetLinhaRelatorio(pedido);
             var json = JsonConvert.SerializeObject(linhaRelatorio);
             HttpContent httpContent = new StringContent(json, Encoding.UTF8, "application/json");
